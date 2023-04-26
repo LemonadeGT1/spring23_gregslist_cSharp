@@ -130,3 +130,36 @@ WHERE id = 3;
 DELETE FROM houses WHERE id = 5;
 
 -- DROP TABLE houses;
+
+-- Jobs -----------------------------
+
+CREATE TABLE
+    IF NOT EXISTS jobs(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        jobSalary MEDIUMINT NOT NULL,
+        jobTitle VARCHAR(255) NOT NULL,
+        jobDescription VARCHAR(1023) NOT NULL,
+        pointOfContact VARCHAR(63) NOT NULL,
+        isOpen BOOLEAN NOT NULL,
+        createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) default charset utf8mb4;
+
+INSERT INTO
+    jobs (
+        `jobSalary`,
+        `jobTitle`,
+        `jobDescription`,
+        `pointOfContact`,
+        `isOpen`
+    )
+VALUES
+(
+        55000,
+        "Mountain Bike Tour Guide",
+        "Give lots of people tours of the local trails. Keep fit. Make lots of money!",
+        "HireMe@GiantBikes.com",
+        TRUE
+    );
+
+UPDATE jobs SET `jobSalary` = 65000 WHERE id = 2;
